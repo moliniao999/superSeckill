@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesley.seckill.dao.SeckillStockMapper">
+    <resultMap id="BaseResultMap" type="com.wesley.seckill.model.SeckillStock">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="seckill_id" jdbcType="BIGINT" property="seckillId"/>
+        <result column="goods_id" jdbcType="INTEGER" property="goodsId"/>
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="sku" jdbcType="VARCHAR" property="sku"/>
+        <result column="stock_init" jdbcType="INTEGER" property="stockInit"/>
+        <result column="stock" jdbcType="INTEGER" property="stock"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="state" jdbcType="TINYINT" property="state"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="max_buy" jdbcType="INTEGER" property="maxBuy"/>
+    </resultMap>
+
+
+    <!-- 乐观锁方式更新 -->
+   <!-- <update id="saleStock" parameterType="map">
+    UPDATE seckill_stock
+    SET
+        stock = stock - #{goodsNum},
+        version = version +1
+    where
+        seckill_id = #{seckillId}
+    and version = #{version}
+    and stock - #{goodsNum} >= 0
+    and max_buy >= #{goodsNum}
+  </update>-->
+
+
+    <update id="saleStock" parameterType="map">
+        UPDATE seckill_stock
+        SET
+        stock = stock - #{goodsNum}
+        where
+        seckill_id = #{seckillId}
+    </update>
+
+
+</mapper>

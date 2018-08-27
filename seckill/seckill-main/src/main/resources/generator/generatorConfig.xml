@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+
+
+<generatorConfiguration>
+    <properties resource="generator/generator-config.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="${mapper.plugin}">
+            <property name="mappers" value="${mapper.Mapper}"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+
+        <sqlMapGenerator targetPackage="${targetXMLPackage}"  targetProject="${targetResourcesProject}"/>
+
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
+
+
+
+
+        <!-- Service生成插件 -->
+        <!-- targetProject和targetPackage必填 -->
+        <!--<plugin type="${myService.Plugin}">-->
+        <!--<property name="targetProject" value="${targetJavaProject}"></property>-->
+        <!--<property name="targetPackage" value="${targetServicePackage}"></property>-->
+        <!--&lt;!&ndash; 如果不配置，则不会在类上继承 &ndash;&gt;-->
+        <!--<property name="serviceSuperClass" value="com.wesley.utils.base.BaseServiceImpl"></property>-->
+        <!--&lt;!&ndash; 如果不配置，则不会在接口上继承 &ndash;&gt;-->
+        <!--<property name="serviceSuperInterface" value="com.wesley.utils.base.BaseService"></property>-->
+        <!--</plugin>-->
+
+
+
+
+        <!--<table tableName="%" >-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+
+        <!-- 生成指定表模型 -->
+
+        <table domainObjectName="seckill_stock" tableName="seckill_stock">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table domainObjectName="seckill_order" tableName="seckill_order">
+        <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
+

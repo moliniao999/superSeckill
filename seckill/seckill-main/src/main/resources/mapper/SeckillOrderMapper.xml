@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesley.seckill.dao.SeckillOrderMapper">
+  <resultMap id="BaseResultMap" type="com.wesley.seckill.model.SeckillOrder">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="orderId" jdbcType="BIGINT" property="orderid" />
+    <result column="seckill_id" jdbcType="INTEGER" property="seckillId" />
+    <result column="user_phone" jdbcType="BIGINT" property="userPhone" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
+    <result column="orderAmount" jdbcType="BIGINT" property="orderAmount" />
+  </resultMap>
+</mapper>
